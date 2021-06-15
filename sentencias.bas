@@ -4,13 +4,12 @@ Sub main()
 With BASE
 .CursorLocation = adUseClient
 .Open "Provider=Microsoft.Jet.OLEDB.4.0;Data Source=" & App.Path & "\basevivero.mdb;Persist Security Info=False"
-Form1.Show
+principal.Show
 End With
 End Sub
 
-Sub planta()
-With rsplanta
-
+Sub admin()
+With rsadmin
 If .State = 1 Then .Close
     .Open "select * from ADMINISTRADOR", BASE, adOpenStatic, adLockOptimistic
 End With
@@ -20,7 +19,16 @@ Sub plan()
 With rsp
 
 If .State = 1 Then .Close
+
     .Open "select * from PLANTA", BASE, adOpenStatic, adLockOptimistic
 End With
 End Sub
+Sub detallefactura()
+With detallefac
+
+If .State = 1 Then .Close
+    .Open "select * from DETALLE_PEDIDO", BASE, adOpenStatic, adLockOptimistic
+End With
+End Sub
+
 
