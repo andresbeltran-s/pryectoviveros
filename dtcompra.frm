@@ -1,111 +1,189 @@
 VERSION 5.00
-Object = "{5E9E78A0-531B-11CF-91F6-C2863C385E30}#1.0#0"; "MSFLXGRD.OCX"
+Object = "{CDE57A40-8B86-11D0-B3C6-00A0C90AEA82}#1.0#0"; "MSDATGRD.OCX"
 Begin VB.Form dtcompra 
+   BackColor       =   &H0000C000&
    Caption         =   "Form1"
-   ClientHeight    =   7440
+   ClientHeight    =   7020
    ClientLeft      =   120
    ClientTop       =   465
-   ClientWidth     =   13050
+   ClientWidth     =   10335
    LinkTopic       =   "Form1"
-   ScaleHeight     =   7440
-   ScaleWidth      =   13050
+   Picture         =   "dtcompra.frx":0000
+   ScaleHeight     =   7020
+   ScaleWidth      =   10335
    StartUpPosition =   3  'Windows Default
-   Begin VB.TextBox txtcantidad 
-      Height          =   375
-      Left            =   5160
-      OLEDropMode     =   1  'Manual
-      TabIndex        =   11
-      Top             =   1440
-      Width           =   1455
-   End
-   Begin VB.TextBox txtprecio 
+   Begin VB.TextBox Text3 
       Height          =   495
-      Left            =   1800
+      Left            =   3240
+      TabIndex        =   8
+      Top             =   6120
+      Width           =   1095
+   End
+   Begin VB.TextBox Text2 
+      Height          =   495
+      Left            =   3240
+      TabIndex        =   7
+      Top             =   5280
+      Width           =   1215
+   End
+   Begin VB.TextBox Text1 
+      Height          =   615
+      Left            =   3240
       TabIndex        =   6
-      Top             =   1440
-      Width           =   1935
+      Top             =   4440
+      Width           =   1575
    End
-   Begin VB.TextBox txtnom1 
-      Height          =   375
-      Left            =   2640
-      TabIndex        =   5
-      Top             =   840
-      Width           =   1335
-   End
-   Begin MSFlexGridLib.MSFlexGrid Lista 
-      Height          =   3735
+   Begin MSDataGridLib.DataGrid Lista 
+      Height          =   2535
       Left            =   840
-      TabIndex        =   4
-      Top             =   2280
-      Width           =   12015
-      _ExtentX        =   21193
-      _ExtentY        =   6588
+      TabIndex        =   5
+      Top             =   720
+      Width           =   8295
+      _ExtentX        =   14631
+      _ExtentY        =   4471
       _Version        =   393216
-      Rows            =   20
-      Cols            =   5
+      HeadLines       =   1
+      RowHeight       =   15
+      BeginProperty HeadFont {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
+         Name            =   "MS Sans Serif"
+         Size            =   8.25
+         Charset         =   0
+         Weight          =   400
+         Underline       =   0   'False
+         Italic          =   0   'False
+         Strikethrough   =   0   'False
+      EndProperty
+      BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
+         Name            =   "MS Sans Serif"
+         Size            =   8.25
+         Charset         =   0
+         Weight          =   400
+         Underline       =   0   'False
+         Italic          =   0   'False
+         Strikethrough   =   0   'False
+      EndProperty
+      ColumnCount     =   2
+      BeginProperty Column00 
+         DataField       =   ""
+         Caption         =   ""
+         BeginProperty DataFormat {6D835690-900B-11D0-9484-00A0C91110ED} 
+            Type            =   0
+            Format          =   ""
+            HaveTrueFalseNull=   0
+            FirstDayOfWeek  =   0
+            FirstWeekOfYear =   0
+            LCID            =   12298
+            SubFormatType   =   0
+         EndProperty
+      EndProperty
+      BeginProperty Column01 
+         DataField       =   ""
+         Caption         =   ""
+         BeginProperty DataFormat {6D835690-900B-11D0-9484-00A0C91110ED} 
+            Type            =   0
+            Format          =   ""
+            HaveTrueFalseNull=   0
+            FirstDayOfWeek  =   0
+            FirstWeekOfYear =   0
+            LCID            =   12298
+            SubFormatType   =   0
+         EndProperty
+      EndProperty
+      SplitCount      =   1
+      BeginProperty Split0 
+         BeginProperty Column00 
+         EndProperty
+         BeginProperty Column01 
+         EndProperty
+      EndProperty
    End
    Begin VB.CommandButton Command1 
-      Caption         =   "aceptar"
       Height          =   615
-      Left            =   5760
+      Left            =   5520
+      Style           =   1  'Graphical
       TabIndex        =   3
-      Top             =   6240
-      Width           =   2175
+      Top             =   5280
+      Width           =   1815
+   End
+   Begin VB.Label Label4 
+      BackStyle       =   0  'Transparent
+      Caption         =   "FACTURA"
+      BeginProperty Font 
+         Name            =   "Modern No. 20"
+         Size            =   24
+         Charset         =   0
+         Weight          =   700
+         Underline       =   0   'False
+         Italic          =   0   'False
+         Strikethrough   =   0   'False
+      EndProperty
+      Height          =   615
+      Left            =   4200
+      TabIndex        =   9
+      Top             =   120
+      Width           =   2775
    End
    Begin VB.Label Label7 
       Caption         =   "Label7"
       Height          =   375
-      Left            =   10080
-      TabIndex        =   10
-      Top             =   6120
+      Left            =   5400
+      TabIndex        =   4
+      Top             =   6480
+      Visible         =   0   'False
       Width           =   2175
    End
-   Begin VB.Label Label6 
-      Caption         =   "Precio"
-      Height          =   255
-      Left            =   960
-      TabIndex        =   9
-      Top             =   1560
-      Width           =   615
-   End
-   Begin VB.Label Label5 
-      Caption         =   "Cantidad"
-      Height          =   375
-      Left            =   4320
-      TabIndex        =   8
-      Top             =   1560
-      Width           =   855
-   End
-   Begin VB.Label Label4 
-      Caption         =   "nombre del producto:"
-      Height          =   255
-      Left            =   840
-      TabIndex        =   7
-      Top             =   840
-      Width           =   1575
-   End
    Begin VB.Label Label3 
-      Caption         =   "total"
+      BackStyle       =   0  'Transparent
+      Caption         =   "Total"
+      BeginProperty Font 
+         Name            =   "Microsoft Sans Serif"
+         Size            =   12
+         Charset         =   0
+         Weight          =   700
+         Underline       =   0   'False
+         Italic          =   0   'False
+         Strikethrough   =   0   'False
+      EndProperty
       Height          =   615
-      Left            =   3960
+      Left            =   1560
       TabIndex        =   2
       Top             =   6120
       Width           =   1215
    End
    Begin VB.Label Label2 
-      Caption         =   "iva"
+      BackStyle       =   0  'Transparent
+      Caption         =   "Iva"
+      BeginProperty Font 
+         Name            =   "Microsoft Sans Serif"
+         Size            =   12
+         Charset         =   0
+         Weight          =   700
+         Underline       =   0   'False
+         Italic          =   0   'False
+         Strikethrough   =   0   'False
+      EndProperty
       Height          =   495
-      Left            =   2280
+      Left            =   1560
       TabIndex        =   1
-      Top             =   6840
+      Top             =   5280
       Width           =   1215
    End
    Begin VB.Label Label1 
-      Caption         =   "sub total"
+      BackStyle       =   0  'Transparent
+      Caption         =   "Sub total"
+      BeginProperty Font 
+         Name            =   "Microsoft Sans Serif"
+         Size            =   12
+         Charset         =   0
+         Weight          =   700
+         Underline       =   0   'False
+         Italic          =   0   'False
+         Strikethrough   =   0   'False
+      EndProperty
       Height          =   375
-      Left            =   1800
+      Left            =   1560
       TabIndex        =   0
-      Top             =   6360
+      Top             =   4560
       Width           =   1215
    End
 End
@@ -114,67 +192,38 @@ Attribute VB_GlobalNameSpace = False
 Attribute VB_Creatable = False
 Attribute VB_PredeclaredId = True
 Attribute VB_Exposed = False
+Private Sub Command1_Click()
+detallefactura
+With detallefac
+For i = 1 To .RecordCount
+.Delete
+.MoveNext
+Next i
+End With
+principal.Show
+Me.Hide
+Text1.Text = ""
+Text2.Text = ""
+Text3.Text = ""
+
+End Sub
+
 Private Sub Form_Load()
-Lista.ColWidth(0) = 10
-Lista.ColWidth(1) = 3000
-Lista.ColAlignment(1) = 5
-Lista.Col = 1
-Lista.Row = 0
-Lista.Text = "Producto"
-Lista.ColWidth(2) = 3000
-Lista.ColAlignment(2) = 5
-Lista.Col = 2
-Lista.Row = 0
-Lista.Text = "Precio"
-Lista.ColWidth(3) = 3000
-Lista.ColAlignment(3) = 5
-Lista.Col = 3
-Lista.Row = 0
-Lista.Text = "Cantidad"
-Lista.ColWidth(4) = 3000
-Lista.ColAlignment(4) = 5
-Lista.Col = 4
-Lista.Row = 0
-Lista.Text = "Total Unico"
-fila = 1
-
-End Sub
-
-
-
-
-
-Private Sub txtcantidad_KeyPress(KeyAscii As Integer)
-If KeyAscii Then
-    Lista.Col = 1
-    Lista.Row = fila
-    Lista.Text = txtnom1.Text
-    Lista.Col = 2
-    Lista.Row = fila
-    Lista.Text = txtprecio.Text
-    Lista.Col = 3
-    Lista.Row = fila
-    Lista.Text = txtcantidad.Text
-    a = Val(txtprecio.Text) * Val(txtcantidad.Text)
-    Lista.Col = 4
-    Lista.Row = fila
-    Lista.Text = a
-    fila = fila + 1
-    txtnom1.Text = ""
-    txtprecio.Text = ""
-    txtcantidad.Text = ""
-    txtnom1.SetFocus
-End If
-End Sub
-
-Private Sub txtnom1_KeyPress(KeyAscii As Integer)
-If KeyAscii = 13 Then
-    txtprecio.SetFocus
-End If
-End Sub
-
-Private Sub txtprecio_KeyPress(KeyAscii As Integer)
-If KeyAscii = 13 Then
-    txtcantidad.SetFocus
-End If
+detallefactura
+Set Lista.DataSource = detallefac
+Lista.Columns(0).Width = 0
+Lista.Columns(1).Width = 3000
+Lista.Columns(2).Width = 0
+Lista.Columns(3).Width = 3000
+Lista.Columns(4).Width = 3000
+With detallefac
+For i = 1 To .RecordCount
+Text1.Text = Val(Text1.Text) + Val(!TOTALD)
+.MoveNext
+Next i
+End With
+a = 0.12
+Text2.Text = a * Val(Text1.Text)
+Text3.Text = CDbl(Text1.Text) + CDbl(Text2.Text)
+Command1.Picture = LoadPicture(App.Path & "\img\aceptar.gif")
 End Sub

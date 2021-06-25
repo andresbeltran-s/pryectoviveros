@@ -498,6 +498,7 @@ modificar.cmdnuevo2.Enabled = False
 With modificar
 .cmdnuevo2.Visible = False
 .Command8.Visible = False
+.Frame5.Visible = False
 End With
 End Sub
 

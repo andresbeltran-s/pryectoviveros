@@ -4,23 +4,23 @@ Object = "{CDE57A40-8B86-11D0-B3C6-00A0C90AEA82}#1.0#0"; "MSDATGRD.OCX"
 Begin VB.Form principal 
    BackColor       =   &H00000000&
    Caption         =   "Principal"
-   ClientHeight    =   9510
+   ClientHeight    =   9900
    ClientLeft      =   120
    ClientTop       =   465
-   ClientWidth     =   15000
+   ClientWidth     =   15135
    LinkTopic       =   "Form1"
    Picture         =   "vivero.frx":0000
-   ScaleHeight     =   634
+   ScaleHeight     =   660
    ScaleMode       =   3  'Pixel
-   ScaleWidth      =   1000
+   ScaleWidth      =   1009
    StartUpPosition =   3  'Windows Default
    Begin VB.CommandButton Command3 
-      Caption         =   "finalizar compra"
       Height          =   615
-      Left            =   12240
+      Left            =   6480
+      Style           =   1  'Graphical
       TabIndex        =   27
-      Top             =   8760
-      Width           =   2415
+      Top             =   9120
+      Width           =   1815
    End
    Begin VB.CommandButton Command4 
       BeginProperty Font 
@@ -608,6 +608,13 @@ tabla.Columns(2).Width = 180
 tabla.Columns(3).Width = 180
 tabla.Columns(4).Width = 180
 Command2.Enabled = True
+
+txtcantidad.Text = ""
+txtstok.Caption = ""
+txtdescri.Caption = ""
+txtprecio.Caption = ""
+txttot.Caption = ""
+txtid.Caption = ""
 End Sub
 
 Private Sub Command2_Click()
@@ -622,14 +629,18 @@ If .EOF Or .BOF Then Command2.Enabled = False: Exit Sub
 Label2.Caption = !PLANTA_ID
 Label3.Caption = !CANTIDAD
 .Delete
+.Update
 End With
 Adodc1.CursorLocation = adUseClient
 Adodc1.ConnectionString = "Provider=Microsoft.Jet.OLEDB.4.0;Data Source=" & App.Path & "\basevivero.mdb;Persist Security Info=False"
 Adodc1.RecordSource = "select * from PLANTA where [PLANTAID]LIKE '" & Label2.Caption & "'"
 
 rsp.Find "PLANTAID= '" & Label2.Caption & "'"
+'txtstok.Caption = Val(rsp!stock) + Val(Label3.Caption)
 rsp!stock = Val(rsp!stock) + Val(Label3.Caption)
+
 rsp.Update
+
 txtstok.Caption = Val(txtstok.Caption) + Val(txtcantidad.Text)
 detallefactura
 Set tabla.DataSource = detallefac
@@ -681,6 +692,7 @@ Command2.Picture = LoadPicture(App.Path & "\img\eliminar.gif")
 Command5.Picture = LoadPicture(App.Path & "\img\listplan.gif")
 Command4.Picture = LoadPicture(App.Path & "\img\reporte.gif")
 cmdinicio.Picture = LoadPicture(App.Path & "\img\iniciose.gif")
+Command3.Picture = LoadPicture(App.Path & "\img\fin.gif")
 detallefactura
 plan
 Set tabla.DataSource = detallefac
@@ -690,6 +702,8 @@ tabla.Columns(2).Width = 180
 tabla.Columns(3).Width = 180
 tabla.Columns(4).Width = 180
 End Sub
+
+
 
 
 

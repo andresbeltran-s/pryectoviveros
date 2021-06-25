@@ -31,13 +31,14 @@ Begin VB.Form modificar
    Begin VB.Frame Frame5 
       Caption         =   "FOTO"
       Height          =   2775
-      Left            =   8880
+      Left            =   8280
       TabIndex        =   13
       Top             =   480
       Width           =   3015
       Begin VB.Image foto 
          Height          =   2055
          Left            =   240
+         Stretch         =   -1  'True
          Top             =   360
          Width           =   2415
       End
@@ -53,11 +54,11 @@ Begin VB.Form modificar
          Italic          =   0   'False
          Strikethrough   =   0   'False
       EndProperty
-      Height          =   855
+      Height          =   735
       Left            =   9480
       TabIndex        =   12
-      Top             =   3360
-      Width           =   2055
+      Top             =   3480
+      Width           =   2175
    End
    Begin VB.CommandButton cmdnuevo2 
       BackColor       =   &H00FFFFFF&
@@ -300,8 +301,9 @@ With rsp
 .Update
 End With
 
-foto.Picture = LoadPicture(x & "\" & lblname.Caption)
+
 FileCopy abrir.FileName, App.Path & "\" & abrir.FileTitle
+MsgBox "Ya se agrego a la base de datos"
 End Sub
 
 Private Sub Command8_Click()
