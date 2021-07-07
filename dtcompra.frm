@@ -6,11 +6,11 @@ Begin VB.Form dtcompra
    ClientHeight    =   7020
    ClientLeft      =   120
    ClientTop       =   465
-   ClientWidth     =   10335
+   ClientWidth     =   9840
    LinkTopic       =   "Form1"
    Picture         =   "dtcompra.frx":0000
    ScaleHeight     =   7020
-   ScaleWidth      =   10335
+   ScaleWidth      =   9840
    StartUpPosition =   3  'Windows Default
    Begin VB.TextBox Text3 
       Height          =   495
@@ -105,6 +105,13 @@ Begin VB.Form dtcompra
       Top             =   5280
       Width           =   1815
    End
+   Begin VB.Label l 
+      Height          =   135
+      Left            =   11760
+      TabIndex        =   10
+      Top             =   960
+      Width           =   135
+   End
    Begin VB.Label Label4 
       BackStyle       =   0  'Transparent
       Caption         =   "FACTURA"
@@ -193,9 +200,37 @@ Attribute VB_Creatable = False
 Attribute VB_PredeclaredId = True
 Attribute VB_Exposed = False
 Private Sub Command1_Click()
+Dim a As Integer
+pedido
 detallefactura
+detalles
+With rspedido
+    .Requery
+    .Find "CODIGO_PEDIDO ='" & (l.Caption) & "'"
+    If .EOF Or .BOF Then Exit Sub
+    !Total = Val(Text1.Text)
+    !TOTAL_IVA = CDbl(Text3.Text)
+    .UpdateBatch
+End With
+a = detallefac.RecordCount
+detallefac.Requery
+detallefac.MoveFirst
+For x = 1 To a
+    With rsdetalles
+        .Requery
+        .AddNew
+        !PLANTA_ID = Lista.Columns(1).Text
+        !CANTIDAD = Lista.Columns(3).Text
+        !TOTALD = Lista.Columns(4).Text
+        !CODIGO_PEDIDO = Lista.Columns(5).Text
+        !PLANTA = Lista.Columns(2).Text
+        .Update
+    End With
+    If x = a Then Else detallefac.MoveNext
+Next
 With detallefac
 For i = 1 To .RecordCount
+.Requery
 .Delete
 .MoveNext
 Next i
@@ -205,17 +240,25 @@ Me.Hide
 Text1.Text = ""
 Text2.Text = ""
 Text3.Text = ""
-
+With principal
+    .l.Caption = ""
+    .cmdnuevo.Enabled = True
+End With
+Unload Me
 End Sub
 
 Private Sub Form_Load()
 detallefactura
+With principal
+    l.Caption = Val(.l.Caption)
+End With
 Set Lista.DataSource = detallefac
 Lista.Columns(0).Width = 0
-Lista.Columns(1).Width = 3000
-Lista.Columns(2).Width = 0
+Lista.Columns(1).Width = 0
+Lista.Columns(2).Width = 3000
 Lista.Columns(3).Width = 3000
 Lista.Columns(4).Width = 3000
+Lista.Columns(5).Width = 0
 With detallefac
 For i = 1 To .RecordCount
 Text1.Text = Val(Text1.Text) + Val(!TOTALD)
@@ -224,6 +267,6 @@ Next i
 End With
 a = 0.12
 Text2.Text = a * Val(Text1.Text)
-Text3.Text = CDbl(Text1.Text) + CDbl(Text2.Text)
+Text3.Text = Val(Text1.Text) + Val(Text2.Text)
 Command1.Picture = LoadPicture(App.Path & "\img\aceptar.gif")
 End Sub
